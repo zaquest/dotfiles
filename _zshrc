@@ -1,0 +1,63 @@
+# If not a login shell then already have this inherited from a login
+# shell and it was not reset by arch's default systemwide zshprofile.
+# FUCKINGLKAS:JDHFLSKDJHGFSKJFUCK
+[[ -o login && -f ~/.pathrc ]] && . ~/.pathrc
+fpath=(~/.zsh $fpath)
+
+zstyle ':completion:*' completer _complete _ignored
+zstyle ':completion:*' matcher-list '' '' '' 'r:|[._-]=** r:|=**'
+zstyle :compinstall filename '/home/zaquest/.zshrc'
+
+autoload -Uz compinit && compinit
+# End of lines added by compinstall
+
+HISTFILE=~/.zsh_history
+HISTSIZE=1000
+SAVEHIST=1000
+bindkey -v
+
+unsetopt correct_all
+unsetopt auto_cd
+unsetopt share_history
+
+export WORKON_HOME=$HOME/projects/pyenvs
+export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
+
+source /usr/bin/virtualenvwrapper.sh
+
+export EDITOR=nvim
+export BROWSER=qutebrowser
+
+export MANWIDTH=80
+
+# begin trash script
+TRASH_DIR="$HOME/trash"
+
+function rm {
+    local dir=$TRASH_DIR/$(date +%F-%H-%M-%S-%N);
+    mkdir -p $dir;
+    mv -t $dir -- "$@";
+    local rval=$status;
+    if [[ $rval != 0 ]]; then
+        /bin/rm -d $dir;
+    fi
+    return $rval;
+}
+# end trash script
+
+eval `dircolors ~/.dircolors`
+alias ls='ls --color=auto'
+
+alias grep="grep --color"
+alias drep="grep --color -Rn"
+unset GREP_OPTIONS
+
+alias userctl="systemctl --user"
+
+alias tmux="env TERM=st-256color tmux"
+
+export NPM_CONFIG_PREFIX=$HOME/.npm-global
+
+# my theme
+autoload -Uz promptinit && promptinit
+prompt zaquest

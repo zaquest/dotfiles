@@ -1,0 +1,41 @@
+#!/usr/bin/env python
+
+import os
+
+home = os.environ['HOME']
+
+path_subst = {
+    home: '~',
+    f'{home}/downloads': 'downloads',
+    f'{home}/downloads/torrents': 'torrents',
+    f'{home}/downloads/dcpp': 'dcpp',
+    f'{home}/redeclipse': 're',
+    f'{home}/redeclipse/redeclipse-git': 're-git',
+    f'{home}/redeclipse/redeclipse': 're-stable',
+    f'{home}/redeclipse/redeclipse-1.4': 're-1.4',
+}
+
+nopathcmd = {'vifm'}
+nocmd = {'zsh'}
+
+
+def fmtpane(path, cmd, zoom):
+    if cmd in nopathcmd:
+        return cmd
+    curpath, subst = '', ''
+    for p, sub in path_subst.items():
+        if len(p) > len(curpath) and path.startswith(p):
+            curpath, subst = p, sub
+    path = subst + path[len(curpath):]
+    cmd = '' if cmd in nocmd else f' $ {cmd}'
+    zoom = ' Z' if zoom else ''
+    return f'{path}{cmd}{zoom}'
+
+
+if __name__ == '__main__':
+    import sys
+
+    _, path, cmd, zoom = sys.argv[:4]
+    zoom = bool(int(zoom))
+
+    print(fmtpane(path, cmd, zoom))

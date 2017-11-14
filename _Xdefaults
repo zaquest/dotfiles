@@ -1,0 +1,27 @@
+!-------------------------------------------------------------------------------
+! Xft settings
+!-------------------------------------------------------------------------------
+
+Xft.dpi:                    96
+Xft.antialias:              true
+Xft.rgba:                   rgb
+Xft.hinting:                true
+Xft.hintstyle:              hintslight
+
+! fltk
+! The default background color for widgets (color).
+fltk.background: #282828
+! The default setting for drag and drop text operations (boolean).
+!fltk.dndTextOps
+! The default foreground (label) color for widgets (color).
+fltk.foreground: #dddddd
+! The default scheme to use (string).
+!fltk.scheme: gtk+
+! The default selection color for menus, etc. (color).
+Text.selectBackground: #535d6c
+! The default background color for text fields (color).
+Text.background: #282828
+! The default setting for tooltips (boolean).
+!fltk.tooltips
+! The default setting for visible keyboard focus on non-text widgets (boolean).
+!fltk.visibleFocus
