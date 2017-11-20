@@ -1,3 +1,6 @@
 [user]
-	email = web.elektro.net@gmail.com
-	name = zaquest
+  email = web.elektro.net@gmail.com
+  name = zaquest
+
+[alias]
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short

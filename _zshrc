@@ -61,3 +61,6 @@ export NPM_CONFIG_PREFIX=$HOME/.npm-global
 # my theme
 autoload -Uz promptinit && promptinit
 prompt zaquest
+
+
+alias gallium='GALLIUM_HUD="fps+draw-calls;GPU-load;GPU-shaders-busy+num-shaders-created;VRAM-usage+requested-VRAM+GTT-usage" $@'
