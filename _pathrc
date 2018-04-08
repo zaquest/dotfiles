@@ -1,8 +1,8 @@
 #CABALPATH=.cabal-sandbox/bin:$HOME/.cabal/bin
 LOCALPATH=$HOME/.local/bin
-RUBYGEMPATH=$(ruby -rubygems -e "puts Gem.user_dir")/bin
+#RUBYGEMPATH=$(ruby -rubygems -e "puts Gem.user_dir")/bin
 #NIMBLEPATH=$HOME/.nimble/bin
 #PLAN9BASE=/opt/plan9/bin
 NPM_GLOBAL_BIN=$HOME/.npm-global/bin
 #CHICKEN_REPOSITORY=$HOME/.local/lib/chicken/8
-export PATH="$LOCALPATH:$RUBYGEMPATH:$NPM_GLOBAL_BIN:$PATH"
+export PATH="$LOCALPATH:$NPM_GLOBAL_BIN:$PATH"

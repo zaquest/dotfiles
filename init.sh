@@ -3,7 +3,7 @@
 base=$(dirname $0)
 base=$(readlink -f $base)
 
-ln -sf $base/_xinitrc $HOME/.xinitrc
+ln -sf $base/_xprofile $HOME/.xprofile
 ln -sf $base/_Xdefaults $HOME/.Xdefaults
 ln -sf $base/_tmux.conf $HOME/.tmux.conf
 ln -sf $base/_zsh $HOME/.zsh

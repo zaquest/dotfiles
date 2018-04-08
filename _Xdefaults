@@ -2,7 +2,7 @@
 ! Xft settings
 !-------------------------------------------------------------------------------
 
-Xft.dpi:                    96
+!Xft.dpi:                    96
 Xft.antialias:              true
 Xft.rgba:                   rgb
 Xft.hinting:                true
@@ -25,3 +25,5 @@ Text.background: #282828
 !fltk.tooltips
 ! The default setting for visible keyboard focus on non-text widgets (boolean).
 !fltk.visibleFocus
+
+Xcursor.size: 32

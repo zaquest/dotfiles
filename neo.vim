@@ -54,7 +54,13 @@ Plugin 'tikhomirov/vim-glsl'
 " pandoc markdown syntax
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 " command-t files/buffer/commands/tags fuzzy search
-Plugin 'wincent/command-t'
+" Plugin 'wincent/command-t'
+Plugin 'peterhoeg/vim-qml'
+" action script
+Plugin 'jeroenbourgois/vim-actionscript'
+"
+Plugin 'tpope/vim-sleuth'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -72,10 +78,10 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 " End of Vundle set up
 
-set termguicolors   " enable TrueColor
+set termguicolors   " enable TrueColor / waiting for a new release https://github.com/neovim/neovim/issues/7618 https://github.com/neovim/neovim/issues/7381
 set background=dark " dark variant of theme
 colorscheme gruvbox " colorscheme
-let g:gruvbox_bold = 0  " disable bold fonts
+let g:gruvbox_bold=0  " disable bold fonts
 
 let mapleader="," " change the leader to be a comma vs slash
 
@@ -113,7 +119,7 @@ autocmd BufNewFile,BufRead *.purs setlocal ft=purescript
 autocmd BufNewFile,BufRead *.shader setlocal ft=glsl
 
 " Indent options by filetype
-autocmd FileType html,xhtml,xml,css,javascript,c,cpp setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
+autocmd FileType html,xhtml,xml,css,javascript,c,cpp setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType haskell,lisp,racket,purescript setlocal expandtab shiftwidth=2 tabstop=4 softtabstop=2
 
 set colorcolumn=70 " Make it 70 to be sure it will fit in 80 :P
@@ -174,23 +180,24 @@ nmap <a-h> :vertical res -5<CR>
 nmap <a-l> :vertical res +5<CR>
 
 "toggles whether or not the current window is automatically zoomed
-function! ToggleMaxWins()
-  if exists('g:windowMax')
-    au! maxCurrWin
-    wincmd =
-    unlet g:windowMax
-  else
-    augroup maxCurrWin
-        " au BufEnter * wincmd _ | wincmd |
-        "
-        " only max it vertically
-        au! WinEnter * wincmd _
-    augroup END
-    do maxCurrWin WinEnter
-    let g:windowMax=1
-  endif
-endfunction
-nnoremap <leader>z :call ToggleMaxWins()<CR>
+" function! ToggleMaxWins()
+"   if exists('g:windowMax')
+"     au! maxCurrWin
+"     wincmd =
+"     unlet g:windowMax
+"   else
+"     augroup maxCurrWin
+"         " au BufEnter * wincmd _ | wincmd |
+"         "
+"         " only max it vertically
+"         au! WinEnter * wincmd _
+"     augroup END
+"     do maxCurrWin WinEnter
+"     let g:windowMax=1
+"   endif
+" endfunction
+" nnoremap <leader>z :call ToggleMaxWins()<CR>
+nnoremap <C-w>v :85vsplit<CR>
 
 " Files to ignore for NERDTree
 let NERDTreeIgnore = ['\~$'] " default
@@ -198,11 +205,15 @@ let NERDTreeIgnore+= ['\.o$[[file]]', '\.gch$[[file]]'] " object files
 let NERDTreeIgnore+= ['\.py[co]$[[file]]', '^__pycache__$[[dir]]', '\.egg-info$[[dir]]'] " Python
 let NERDTreeIgnore+= ['\.hi$[[file]]'] " Haskell
 
-let g:syntastic_cpp_checkers = ['make']
+let g:syntastic_cpp_checkers = ['gcc']
+let g:syntastic_python_pylint_args = "--disable=missing-docstring,invalid-name,too-few-public-methods"
 
 augroup pandoc_syntax
     au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
     au! BufNewFile,BufFilePre,BufRead *.page set filetype=markdown.pandoc
 augroup END
+
+au! BufNewFile,BufFilePre,BufRead *.rml set filetype=xml
+au! BufNewFile,BufFilePre,BufRead *.rcss set filetype=css
 
 map <leader>tt :CommandTTag<CR>

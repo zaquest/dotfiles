@@ -18,9 +18,7 @@ bindkey -v
 
 unsetopt correct_all
 unsetopt auto_cd
-unsetopt share_history
 
-export WORKON_HOME=$HOME/projects/pyenvs
 export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
 
 source /usr/bin/virtualenvwrapper.sh
