@@ -27,3 +27,4 @@ bin=$HOME/.local/bin
 mkdir -p $bin
 ln -sf $base/bin/term $bin/term
 ln -sf $base/bin/diff $bin/diff
+ln -sf $base/bin/dmenu_run $bin/dmenu_run

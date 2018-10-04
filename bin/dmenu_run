@@ -1,0 +1,3 @@
+#!/bin/zsh
+to_run=$(dmenu_path | dmenu "$@")
+eval "$to_run &!"
