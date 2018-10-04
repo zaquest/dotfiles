@@ -19,10 +19,6 @@ bindkey -v
 unsetopt correct_all
 unsetopt auto_cd
 
-export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
-
-source /usr/bin/virtualenvwrapper.sh
-
 export EDITOR=nvim
 export BROWSER=qutebrowser
 export SYSTEMD_EDITOR=nvim
@@ -51,14 +47,6 @@ alias grep="grep --color"
 alias drep="grep --color -Rn"
 unset GREP_OPTIONS
 
-alias userctl="systemctl --user"
-
-alias tmux="env TERM=st-256color tmux"
-
-export NPM_CONFIG_PREFIX=$HOME/.npm-global
-
 # my theme
 autoload -Uz promptinit && promptinit
-prompt zaquest
-
-alias gallium='GALLIUM_HUD="fps+draw-calls;GPU-load;GPU-shaders-busy+num-shaders-created;VRAM-usage+requested-VRAM+GTT-usage" $@'
+prompt root
