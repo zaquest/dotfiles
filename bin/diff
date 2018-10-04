@@ -1,0 +1,7 @@
+#!/bin/sh
+diff="/usr/bin/diff -u"
+if [ -t 1 ]; then
+  $diff --color=always "$@" | less -RF
+else
+  $diff "$@"
+fi

@@ -6,7 +6,7 @@ fpath=(~/.zsh $fpath)
 
 zstyle ':completion:*' completer _complete _ignored
 zstyle ':completion:*' matcher-list '' '' '' 'r:|[._-]=** r:|=**'
-zstyle :compinstall filename '/home/zaquest/.zshrc'
+zstyle :compinstall filename "$HOME/.zshrc"
 
 autoload -Uz compinit && compinit
 # End of lines added by compinstall
@@ -25,6 +25,7 @@ source /usr/bin/virtualenvwrapper.sh
 
 export EDITOR=nvim
 export BROWSER=qutebrowser
+export SYSTEMD_EDITOR=nvim
 
 export MANWIDTH=80
 
