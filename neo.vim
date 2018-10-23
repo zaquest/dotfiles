@@ -60,7 +60,8 @@ Plugin 'peterhoeg/vim-qml'
 Plugin 'jeroenbourgois/vim-actionscript'
 "
 Plugin 'tpope/vim-sleuth'
-
+" JS syntax
+Plugin 'othree/yajs.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -206,6 +207,7 @@ let NERDTreeIgnore+= ['\.py[co]$[[file]]', '^__pycache__$[[dir]]', '\.egg-info$[
 let NERDTreeIgnore+= ['\.hi$[[file]]'] " Haskell
 
 let g:syntastic_cpp_checkers = ['gcc']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_python_pylint_args = "--disable=missing-docstring,invalid-name,too-few-public-methods"
 
 augroup pandoc_syntax

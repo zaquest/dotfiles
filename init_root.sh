@@ -5,6 +5,7 @@ zaquest=$(eval echo "~zaquest")
 mkdir -p $HOME/.config
 ln -sfT $zaquest/.config/nvim $HOME/.config/nvim
 ln -sf $zaquest/.dircolors $HOME/.dircolors
+ln -sf $zaquest/.inputrc $HOME/.inputrc
 
 mkdir -p $HOME/.zsh
 cp $base/_zsh/spectrum $HOME/.zsh

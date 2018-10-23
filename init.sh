@@ -12,6 +12,7 @@ ln -sf $base/_dircolors $HOME/.dircolors
 ln -sf $base/_gitconfig $HOME/.gitconfig
 ln -sf $base/_gtkrc-2.0 $HOME/.gtkrc-2.0
 ln -sf $base/_pathrc $HOME/.pathrc
+ln -sf $base/_inputrc $HOME/.inputrc
 mkdir -p $HOME/.config/nvim/bundle
 ln -sf $base/neo.vim $HOME/.config/nvim/init.vim
 if [[ ! -d "$HOME/.config/nvim/bundle/Vundle.vim" ]]; then
@@ -19,6 +20,7 @@ if [[ ! -d "$HOME/.config/nvim/bundle/Vundle.vim" ]]; then
 fi
 mkdir -p $HOME/.config/fontconfig
 ln -sf $base/fonts.conf $HOME/.config/fontconfig/
+ln -sf $base/user-dirs.dirs $HOME/.config/user-dirs.dirs
 mkdir -p $HOME/.themes
 rm -rf $HOME/.themes/Awesome > /dev/null 2>&1
 tar xjf $base/gtk2-awesome.tar.bz2 -C $HOME/.themes
