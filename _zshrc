@@ -9,17 +9,28 @@ zstyle ':completion:*' matcher-list '' '' '' 'r:|[._-]=** r:|=**'
 zstyle :compinstall filename "$HOME/.zshrc"
 
 autoload -Uz compinit && compinit
+autoload -Uz bashcompinit && bashcompinit
 # End of lines added by compinstall
 
+## History command configuration
+setopt extended_history       # record timestamp of command in HISTFILE
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups       # ignore duplicated commands history list
+# setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expansion to user before running it
+setopt no_incappendhistory
+setopt no_sharehistory
+setopt append_history
 HISTFILE=~/.zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 bindkey -v
 
 unsetopt correct_all
 unsetopt auto_cd
 
 export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
+export MAKEFLAGS=-j$(grep -c ^processor /proc/cpuinfo)
 
 source /usr/bin/virtualenvwrapper.sh
 
@@ -48,6 +59,8 @@ eval `dircolors ~/.dircolors`
 alias ls='ls --color=auto'
 
 alias grep="grep --color"
+alias greppy="grep --color --exclude-dir .tox --include \*.py"
+alias grepjs="grep --color --exclude-dir node_modules --include \*.js --include \*.ts --include \*.vue"
 alias drep="grep --color -Rn"
 unset GREP_OPTIONS
 
@@ -62,3 +75,24 @@ autoload -Uz promptinit && promptinit
 prompt zaquest
 
 alias gallium='GALLIUM_HUD="fps+draw-calls;GPU-load;GPU-shaders-busy+num-shaders-created;VRAM-usage+requested-VRAM+GTT-usage" $@'
+
+# if command -v pyenv 1>/dev/null 2>&1; then
+#     eval "$(pyenv init -)"
+# fi
+
+# opam configuration
+test -r /home/zaquest/.opam/opam-init/init.zsh && . /home/zaquest/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# ssh keychain
+eval $(keychain --eval --noask --quiet id_rsa)
+
+export OPENCV4NODEJS_DISABLE_AUTOBUILD=1
+export OPENCV_INCLUDE_DIR=/home/zaquest/projects/opencv/lib/include/opencv4
+export OPENCV_LIB_DIR=/home/zaquest/projects/opencv/lib/lib
+export OPENCV_BIN_DIR=/home/zaquest/projects/opencv/lib/bin
+# export OPENCV4NODEJS_AUTOBUILD_OPENCV_VERSION=4.3.0
+# export OPENCV4NODEJS_AUTOBUILD_FLAGS="-D WITH_LAPACK=OFF"
+
+export SAM_CLI_TELEMETRY=0
+
+source <(kubectl completion zsh)
